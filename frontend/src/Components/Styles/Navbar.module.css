@@ -1,0 +1,27 @@
+.main {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+.left {
+    border: 0px solid blue;
+    padding: 20px;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: underline;
+}
+.right {
+    border: 0px solid blue;
+    padding: 20px;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+}
