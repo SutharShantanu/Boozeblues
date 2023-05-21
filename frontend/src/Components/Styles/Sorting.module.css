@@ -1,0 +1,11 @@
+.main {
+    border: 0px solid purple;
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main_p {
+    font-weight: 700;
+    text-transform: uppercase;
+}

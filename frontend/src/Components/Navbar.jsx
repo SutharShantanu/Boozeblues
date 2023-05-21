@@ -20,39 +20,49 @@ const Navbar = () => {
                 <Link to="/product/:id">Single Product</Link>
                 <Link to="/cart">Cart</Link>
                 <Link to="/address">Address</Link>
-                <Link to="/payment">Paymnt</Link>
-                <Link to="/wishlist">Wishlist</Link>
+                <Link to="/payment">Payment</Link>
             </div>
             <div className={Styles.right}>
                 <InputGroup w={"25wv"}>
                     <Input type="search" placeholder="Search here anything" />
                     <InputRightElement>
-                        <Button style={{ backgroundColor: "transparent" }}>
-                            <SearchIcon />
-                        </Button>
+                        <Link to="/search">
+                            <Button style={{ backgroundColor: "transparent" }}>
+                                <SearchIcon />
+                            </Button>
+                        </Link>
                     </InputRightElement>
                 </InputGroup>
-                <IconButton
-                    variant="outline"
-                    colorScheme="gray"
-                    icon={<CiHeart />}
-                />
-                <IconButton
-                    variant="outline"
-                    colorScheme="gray"
-                    icon={<CiShoppingCart />}
-                />
-                <IconButton
-                    variant="outline"
-                    colorScheme="gray"
-                    icon={<CiDeliveryTruck />}
-                />
-                <Button
-                    rightIcon={<ArrowForwardIcon />}
-                    colorScheme="gray"
-                    variant="outline">
-                    Login / Register
-                </Button>
+                <Link to="/wishlist">
+                    <IconButton
+                        variant="outline"
+                        colorScheme="gray"
+                        icon={<CiHeart />}
+                        onClick={() => {}}
+                    />
+                </Link>
+                <Link to="/cart">
+                    <IconButton
+                        variant="outline"
+                        colorScheme="gray"
+                        icon={<CiShoppingCart />}
+                    />
+                </Link>
+                <Link to="/order">
+                    <IconButton
+                        variant="outline"
+                        colorScheme="gray"
+                        icon={<CiDeliveryTruck />}
+                    />
+                </Link>
+                <Link to="/signup">
+                    <Button
+                        rightIcon={<ArrowForwardIcon />}
+                        colorScheme="gray"
+                        variant="outline">
+                        Login / Register
+                    </Button>
+                </Link>
             </div>
         </div>
     );
