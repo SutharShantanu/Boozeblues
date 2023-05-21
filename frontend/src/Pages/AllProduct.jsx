@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../Redux/ProductReducer/Action";
-import Styles from "./Styles/AllProduct.module.css";
+import Styles from "./Style/AllProduct.module.css";
 import ProductCard from "../Components/ProductCard";
-
 import { useLocation, useSearchParams } from "react-router-dom";
 import Sorting from "../Components/Sorting";
 import Filter from "../Components/Filter.jsx";
@@ -12,6 +11,7 @@ const AllProduct = () => {
     const alldata = useSelector((store) => store.ProductReducer.products);
 
     const { product } = alldata;
+    // console.log(alldata);
 
     const dispatch = useDispatch();
     const location = useLocation();
@@ -21,6 +21,8 @@ const AllProduct = () => {
         const params = {
             params: {
                 category: searchParams.getAll("category"),
+                _sort: searchParams.get("order") && "price",
+                _order: searchParams.get("order"),
             },
         };
         dispatch(getProducts(params));
@@ -35,7 +37,7 @@ const AllProduct = () => {
                         <p className={Styles.left_p}>(7,434 Products)</p>
                     </div>
                     <div className={Styles.one_right}>
-                        <Sorting />
+                        {/* <Sorting /> */}
                     </div>
                 </div>
                 <div className={Styles.one_two}>

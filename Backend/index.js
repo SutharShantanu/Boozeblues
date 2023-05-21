@@ -3,9 +3,11 @@ const connection = require("./Config/db");
 const { userRouter } = require("./Routes/user.routes");
 const { productRouter } = require("./Routes/product.routes");
 const app = express();
+var cors = require("cors");
 
 require("dotenv").config();
 app.use(express.json());
+app.use(cors());
 
 app.get(`/`, (req, res) => {
     res.send({ msg: `Welcome to the Boozeblues` });

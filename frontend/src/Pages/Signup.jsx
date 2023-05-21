@@ -16,7 +16,7 @@
 
 import {
     Box,
-    Blur,
+
     Stack,
     Heading,
     Text,
@@ -137,12 +137,12 @@ export default function SignupCard() {
                     form
                 </Stack>
             </Container>
-            <Blur
+            {/* <Blur
                 position={"absolute"}
                 top={-10}
                 left={-10}
                 style={{ filter: "blur(70px)" }}
-            />
+            /> */}
         </Box>
     );
 }

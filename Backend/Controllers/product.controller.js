@@ -1,8 +1,8 @@
 const express = require("express");
-const { productModel } = require("../Models/product.models");
+const { productModel } = require("../Models/product.model");
 
 const getProduct = async (req, res) => {
-    let { sort, page, order, category } = req.query;
+    let { page, order, category } = req.query;
     const limit = 7;
     const query = {};
 
@@ -12,11 +12,11 @@ const getProduct = async (req, res) => {
 
     try {
         let product = await productModel.find(query);
-        if (sort === "price" && order === "") {
+        if (order === "") {
             product = product.sort((a, b) => a.id - b.id);
-        } else if (sort === "price" && order === "asc") {
+        } else if (order === "asc") {
             product = product.sort((a, b) => a.price - b.price);
-        } else if (sort === "price" && order === "desc") {
+        } else if (order === "desc") {
             product = product.sort((a, b) => b.price - a.price);
         }
 

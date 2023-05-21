@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import {
     Accordion,
     AccordionButton,
@@ -8,14 +8,22 @@ import {
     AccordionPanel,
     Box,
     Checkbox,
+    Select,
     Stack,
 } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 const Filter = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const initialState = searchParams.getAll("category");
     const [category, setCategory] = useState(initialState || []);
-    const navigate = useNavigate();
+    const initialOrder = searchParams.get("order");
+    const [order, setOrder] = useState(initialOrder || "");
+
+    const handleSort = (e) => {
+        setOrder(e.target.value);
+    };
+
     const handleChange = (e) => {
         let newCategory = [...category];
         let value = e.target.value;
@@ -32,9 +40,9 @@ const Filter = () => {
         let params = {
             category,
         };
+        order && (params.order = order);
         setSearchParams(params);
-    }, [category]);
-    console.log(category);
+    }, [category, order]);
 
     return (
         <div
@@ -44,7 +52,7 @@ const Filter = () => {
                 margin: "8px",
             }}>
             <Accordion allowToggle defaultIndex={[0]}>
-                <AccordionItem>
+                <AccordionItem style={{ border: "none" }}>
                     <h2>
                         <AccordionButton
                             _expanded={{
@@ -89,6 +97,15 @@ const Filter = () => {
                     </AccordionPanel>
                 </AccordionItem>
             </Accordion>
+            <Select
+                // maxWidth={"70%"}
+                _focusVisible={{ outline: "none" }}
+                icon={<ChevronDownIcon />}
+                onChange={handleSort}>
+                <option value="">Relevance</option>
+                <option value="asc">Low to High</option>
+                <option value="desc">High to low</option>
+            </Select>
         </div>
     );
 };

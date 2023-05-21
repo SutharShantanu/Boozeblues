@@ -1,10 +1,24 @@
-import { Select, Text } from "@chakra-ui/react";
-import React from "react";
+import { Select } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import Styles from "./Styles/Sorting.module.css";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useSearchParams } from "react-router-dom";
 
 const Sorting = () => {
-    const handleSort = () => {};
+    const [searchParams, setSearchParams] = useSearchParams();
+    const initialState = searchParams.get("order");
+    const [order, setOrder] = useState(initialState || "");
+
+    const handleSort = (e) => {
+        setOrder(e.target.value);
+    };
+
+    useEffect(() => {
+        const params = {};
+        order && (params.order = order);
+        setSearchParams(params);
+    }, [order]);
+
     return (
         <div className={Styles.main}>
             <p className={Styles.main_p}>Sort By </p>
