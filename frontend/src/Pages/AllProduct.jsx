@@ -9,7 +9,7 @@ import Sidebar from "../Components/Sidebar";
 const AllProduct = () => {
     const alldata = useSelector((store) => store.ProductReducer.products);
 
-    // const { product } = alldata;
+    const { product } = alldata;
     // console.log(alldata);
 
     const dispatch = useDispatch();
