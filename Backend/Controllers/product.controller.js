@@ -12,7 +12,7 @@ const getProduct = async (req, res) => {
 
     try {
         let product = await productModel.find(query);
-        
+
         if (order === "") {
             product = product.sort((a, b) => a.id - b.id);
         } else if (order === "asc") {
@@ -34,4 +34,14 @@ const getProduct = async (req, res) => {
     }
 };
 
-module.exports = { getProduct };
+const getSingleProduct = async (req, res) => {
+    let { id } = req.params;
+    try {
+        const data = await productModel.find({ id: id });
+        res.status(200).send({ msg: [data] });
+    } catch (e) {
+        res.status(400).send({ msg: e.message });
+    }
+};
+
+module.exports = { getProduct, getSingleProduct };

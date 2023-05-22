@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "../Pages/Homepage";
 import AllProducts from "../Pages/AllProduct";
-import SingleProduct from "../Pages/SingleProduct";
+import {SingleProduct} from "../Pages/SingleProduct";
 import Cart from "../Pages/Cart";
 import Address from "../Pages/Address";
 import Payment from "../Pages/Payment";
@@ -17,7 +17,7 @@ const AllRoutes = () => {
         <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/products" element={<AllProducts />} />
-            <Route path="/product/:id" element={<SingleProduct />} />
+            <Route path="/products/:id" element={<SingleProduct />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/address" element={<Address />} />
             <Route path="/payment" element={<Payment />} />
