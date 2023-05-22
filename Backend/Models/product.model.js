@@ -5,9 +5,9 @@ const schema = mongoose.Schema({
     title: String,
     category: String,
     quantity: String,
-    price: String,
+    price: Number,
 });
 
-const productModel = mongoose.model('products', schema);
+const productModel = mongoose.model("products", schema);
 
 module.exports = { productModel };

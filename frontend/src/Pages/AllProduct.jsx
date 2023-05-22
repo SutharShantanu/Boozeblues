@@ -4,13 +4,12 @@ import { getProducts } from "../Redux/ProductReducer/Action";
 import Styles from "./Style/AllProduct.module.css";
 import ProductCard from "../Components/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
-import Sorting from "../Components/Sorting";
-import Filter from "../Components/Filter.jsx";
+import Sidebar from "../Components/Sidebar";
 
 const AllProduct = () => {
     const alldata = useSelector((store) => store.ProductReducer.products);
 
-    const { product } = alldata;
+    // const { product } = alldata;
     // console.log(alldata);
 
     const dispatch = useDispatch();
@@ -36,9 +35,7 @@ const AllProduct = () => {
                         <h1 className={Styles.left_h1}>Wine</h1>
                         <p className={Styles.left_p}>(7,434 Products)</p>
                     </div>
-                    <div className={Styles.one_right}>
-                        {/* <Sorting /> */}
-                    </div>
+                    <div className={Styles.one_right}>{/* <Sorting /> */}</div>
                 </div>
                 <div className={Styles.one_two}>
                     <p>Red Wine</p>
@@ -53,7 +50,7 @@ const AllProduct = () => {
             </div>
             <div className={Styles.main_two}>
                 <div className={Styles.two_one}>
-                    <Filter />
+                    <Sidebar />
                 </div>
                 <div className={Styles.two_two}>
                     {product?.map((ele) => (

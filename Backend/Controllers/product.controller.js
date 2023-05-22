@@ -12,6 +12,7 @@ const getProduct = async (req, res) => {
 
     try {
         let product = await productModel.find(query);
+        
         if (order === "") {
             product = product.sort((a, b) => a.id - b.id);
         } else if (order === "asc") {
