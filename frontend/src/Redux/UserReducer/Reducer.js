@@ -1,11 +1,10 @@
-// reducer.js
 
 import {
     USER_LOADING,
     USER_SUCCESS,
     USER_ERROR,
     USER_LOGOUT,
-} from "./actionTypes";
+} from "./ActionType";
 
 const initialState = {
     isLoading: false,
@@ -14,7 +13,7 @@ const initialState = {
     isError: false,
 };
 
-const reducer = (state = initialState, action) => {
+export const Reducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case USER_LOADING:
@@ -49,4 +48,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export default reducer;
+

@@ -37,13 +37,16 @@ export function Login() {
         const payload = { email, password };
         if (email !== "" && password !== "") {
             try {
-                const res = axios
-                    .post(`http://localhost:4500/users/login`, payload)
-                    .then((res) => console.log(res));
+                const res = await axios.post(
+                    `http://localhost:4500/users/login`,
+                    payload
+                );
+                // console.log(res.data);
+
                 if (res.data.token) {
-                    const payload = res.data.token;
-                    localStorage.setItem("token", payload);
-                    dispatch(loginUser(payload));
+                    const token = res.data.token;
+                    localStorage.setItem("token", token);
+                    dispatch(loginUser(token));
                     setIsButLoading(true);
                     setTimeout(() => {
                         setIsButLoading(false);
@@ -77,9 +80,9 @@ export function Login() {
             }
         } else {
             toast({
-                title: `Details Missing!`,
+                title: "Details Missing!",
                 description: "Kindly fill all the details",
-                status: `warning`,
+                status: "warning",
                 position: "bottom-right",
                 isClosable: true,
                 variant: "left-accent",
