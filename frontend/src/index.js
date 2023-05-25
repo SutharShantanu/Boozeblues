@@ -8,15 +8,18 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <ChakraProvider>
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>
-    </ChakraProvider>
+
+        <ChakraProvider>
+            <BrowserRouter>
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </BrowserRouter>
+        </ChakraProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -7,15 +7,15 @@ require("dotenv").config();
 
 const userRegister = async (req, res) => {
     const payload = req.body;
-    const { name, email, password, gender, age, mobile_no } = payload;
+    const { name, email, password } = payload;
 
     const isUserPresent = await userModel.find({ email: email });
 
     if (isUserPresent.length) {
-        res.send({ msg: "User Already Exists" });
+        return res.send({ msg: "User Already Exists" });
     }
     try {
-        if (name && password && email && gender && mobile_no && age) {
+        if (name && password && email) {
             const hashedPassword = bcrypt.hashSync(password, 4);
             const newUser = new userModel({
                 ...payload,
@@ -48,7 +48,7 @@ const userLogin = async (req, res) => {
                         token: jwt.sign({ name: "shantanu" }, "hang"),
                     });
                 } else {
-                    res.status(401).send({ msg: "Invalid credentials" });
+                    return res.send({ msg: "Invalid credentials" });
                 }
             });
         } else {
@@ -58,7 +58,6 @@ const userLogin = async (req, res) => {
         res.status(500).send({ msg: error.message });
     }
 };
-
 
 // --------------------------------Get All User--------------------------------
 

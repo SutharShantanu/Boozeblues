@@ -2,13 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "../Pages/Homepage";
 import AllProducts from "../Pages/AllProduct";
-import {SingleProduct} from "../Pages/SingleProduct";
+import { SingleProduct } from "../Pages/SingleProduct";
 import Cart from "../Pages/Cart";
 import Address from "../Pages/Address";
 import Payment from "../Pages/Payment";
 import Order from "../Pages/Order";
 import Wishlist from "../Pages/Wishlist";
-import Login from "../Pages/Login";
+import { Login } from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import Search from "../Pages/Search";
 

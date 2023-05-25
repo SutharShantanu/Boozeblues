@@ -67,14 +67,26 @@ export default function ProductCard({
                             fontFamily={"body"}
                             fontWeight={500}
                             p={4}
+                            noOfLines={2} // Limits the title to two lines
+                            style={{
+                                display: "-webkit-box",
+                                WebkitBoxOrient: "vertical",
+                                WebkitLineClamp: 2,
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                maxHeight: "3.6em", // Adjust the height based on your font size and line height
+                            }}
                             textAlign={"center"}>
                             {title}
                         </Text>
-                        <Stack align={"center"}>
+                        <Stack align={"center"} mt={4}>
                             <Text fontWeight={400} fontSize={"sm"}>
-                                {quantity}
+                                {quantity}ml
                             </Text>
-                            <Text fontWeight={800} fontSize={"xl"}>
+                            <Text
+                                fontWeight={800}
+                                fontSize={"xl"}
+                                color={"#85004b"}>
                                 ${price}
                             </Text>
                         </Stack>

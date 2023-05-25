@@ -1,0 +1,26 @@
+.main {
+    display: flex;
+    /* height: 10vh; */
+    /* border: 1px solid blue; */
+
+    width: 100%;
+    justify-content: left;
+}
+.main > img {
+    height: 50%;
+    padding-top: 5px;
+}
+.main_details {
+    /* border: 1px solid red; */
+    text-align: left;
+    padding-left: 10px;
+}
+.main_details > h4 {
+    font-size: 15px;
+
+    font-weight: 600;
+}
+.main_details > h5 {
+    font-size: 14px;
+    font-weight: 400;
+}
