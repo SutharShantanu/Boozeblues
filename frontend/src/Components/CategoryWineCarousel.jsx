@@ -49,7 +49,7 @@ const CategoryWineCarousel = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 6,
-        slidesToScroll: 3,
+        slidesToScroll: 2,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
     };

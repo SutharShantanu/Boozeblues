@@ -61,18 +61,21 @@ const FullCarousel = () => {
         <Slider {...settings} ref={sliderRef}>
             <div>
                 <img
+                    style={{ borderRadius: "15px" }}
                     src="https://storage.gotoliquorstore.com/banner/1187db0f-90e6-420a-b7ec-b2105ecbaa7b.jpg"
                     alt=""
                 />
             </div>
             <div>
                 <img
+                    style={{ borderRadius: "15px" }}
                     src="https://storage.gotoliquorstore.com/banner/76665703-82ce-406b-9889-69542be9865f.jpg"
                     alt=""
                 />
             </div>
             <div>
                 <img
+                    style={{ borderRadius: "15px" }}
                     src="https://storage.gotoliquorstore.com/banner/1011b9cf-589e-4003-a4ad-8eb62a1bd44f.jpg"
                     alt=""
                 />
