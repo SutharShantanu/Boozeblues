@@ -37,30 +37,27 @@ const userRegister = async (req, res) => {
 // --------------------------------Login User--------------------------------
 
 const userLogin = async (req, res) => {
+    const { email, password } = req.body;
     try {
-        const { email, password } = req.body;
-
         const user = await userModel.findOne({ email });
-        if (!user) {
-            return res.status(404).send({ msg: "User not found" });
-        }
-
-        const result = bcrypt.compareSync(password, user.password);
-
-        if (result) {
-            const token = jwt.sign({ name: "shantanu" }, "hang");
-            return res.status(200).send({
-                msg: "Login Successful",
-                token: token,
+        if (user) {
+            bcrypt.compare(password, user.password, (err, result) => {
+                if (result) {
+                    res.status(200).send({
+                        msg: "Login Successful",
+                        token: jwt.sign({ name: "shantanu" }, "hang"),
+                    });
+                } else {
+                    res.status(401).send({ msg: "Invalid credentials" });
+                }
             });
         } else {
-            return res.status(401).send({ msg: "Invalid credentials" });
+            res.status(404).send({ msg: "User not found" });
         }
     } catch (error) {
-        return res.status(500).send({ msg: error.message });
+        res.status(500).send({ msg: error.message });
     }
 };
-
 // --------------------------------Get All User--------------------------------
 
 const userData = async (req, res) => {

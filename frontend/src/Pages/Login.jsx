@@ -16,7 +16,7 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { loginUser } from "../Redux/UserReducer/Action";

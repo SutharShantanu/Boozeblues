@@ -2,12 +2,15 @@ const express = require("express");
 const { productModel } = require("../Models/product.model");
 
 const getProduct = async (req, res) => {
-    let { page, order, category } = req.query;
-    const limit = 7;
+       let { page, order, category, quantity } = req.query;
+    const limit = 8;
     const query = {};
 
     if (category) {
         query.category = { $in: category };
+    }
+    if (quantity) {
+        query.quantity = { $in: quantity };
     }
 
     try {
@@ -38,7 +41,7 @@ const getSingleProduct = async (req, res) => {
     let { id } = req.params;
     try {
         const data = await productModel.find({ id: id });
-        res.status(200).send({ msg: [data] });
+         res.status(200).send(data);
     } catch (e) {
         res.status(400).send({ msg: e.message });
     }

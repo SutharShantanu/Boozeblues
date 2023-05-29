@@ -1,0 +1,20 @@
+.main{
+  margin-top: 60px;
+  /* border: 1px solid red; */
+}
+
+.main> h1{
+  text-align: left;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.slick-prev,
+.slick-next {
+  color: #85004b;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #85004b;
+}

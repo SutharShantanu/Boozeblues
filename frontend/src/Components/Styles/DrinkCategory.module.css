@@ -1,0 +1,26 @@
+.main {
+    /* border: 1px solid red; */
+    position: relative;
+    height: 10vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.main_text {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 15px;
+}
+
+.main_text:hover {
+    color: #85004b;
+}
