@@ -9,6 +9,7 @@ import {
     VisuallyHidden,
     chakra,
     useColorModeValue,
+    Image,
 } from "@chakra-ui/react";
 import {
     FaTwitter,
@@ -110,6 +111,36 @@ export default function LargeWithAppCustomLinksAndSocial() {
                             <FaGooglePlay fontSize={"23px"} />
                         </Stack>
                         <ListHeader>PAYMENT OPTIONS</ListHeader>
+                        <Stack
+                            direction="row"
+                            alignItems="center"
+                            justifyContent="space-between"
+                            width="100%">
+                            <Image
+                                boxSize="50px"
+                                objectFit="contain"
+                                src="https://entrackr.com/storage/2019/04/Mastercard.jpg"
+                                alt=""
+                            />
+                            <Image
+                                boxSize="40px"
+                                objectFit="contain"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png?20170118154621"
+                                alt=""
+                            />
+                            <Image
+                                boxSize="40px"
+                                objectFit="contain"
+                                src="https://cdn-icons-png.flaticon.com/128/5977/5977576.png"
+                                alt=""
+                            />
+                            <Image
+                                boxSize="50px"
+                                objectFit="contain"
+                                src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg"
+                                alt=""
+                            />
+                        </Stack>
 
                         {/* <AppStoreBadge />
             <PlayStoreBadge /> */}
