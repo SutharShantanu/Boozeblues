@@ -1,14 +1,11 @@
 import { Box, Text, Image, Flex, Stack, useToast } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 import { Link as ReactLink } from "react-router-dom";
-import { addWishlist, removeWishlist } from "../Redux/Wishlist/Action";
-import { useDispatch, useSelector } from "react-redux";
-import { CiHeart } from "react-icons/ci";
+import { getWishlist, removeWishlist } from "../Redux/Wishlist/Action";
+import { useDispatch } from "react-redux";
 import Styles from "./Styles/ProductCard.module.css";
 import { AiFillHeart } from "react-icons/ai";
-import jwtDecode from "jwt-decode";
 
-export default function ProductCard({
+export default function WishlistCard({
     image,
     title,
     category,
@@ -16,54 +13,14 @@ export default function ProductCard({
     price,
     id,
 }) {
-    const [wishlist, setwishlist] = useState(false);
-    const dispatch = useDispatch();
     const toast = useToast();
+    const dispatch = useDispatch();
+    console.log(id);
 
-    // Fetch wishlist items from Redux store
-    const wishlistItems = useSelector((state) => state.wishlist?.items || []);
-
-    useEffect(() => {
-        // Check if current product ID exists in wishlist
-        const isProductInWishlist = wishlistItems.some(
-            (item) => item.prodId === id
-        );
-        setwishlist(isProductInWishlist);
-    }, [wishlistItems, id]);
-
-    const handleWishlistAdd = () => {
-        const token = localStorage.getItem("token");
-        const decodedToken = jwtDecode(token);
-        console.log(id);
+    const handleWishlistRemove = async () => {
         try {
-            const item = {
-                userId: decodedToken.iat,
-                prodId: id,
-                image: image,
-                title: title,
-                category: category,
-                quantity: quantity,
-                price: price,
-            };
-            dispatch(addWishlist(item));
-            setwishlist(true);
-            toast({
-                title: "Product added to wishlist",
-                description: "",
-                status: "success",
-                duration: 600,
-                isClosable: true,
-                position: "top",
-            });
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const handleWishlistRemove = () => {
-        try {
-            dispatch(removeWishlist());
-            setwishlist(false);
+            await dispatch(removeWishlist(id));
+            dispatch(getWishlist());
             toast({
                 title: "Product removed from wishlist",
                 status: "error",
@@ -76,10 +33,11 @@ export default function ProductCard({
         }
     };
 
+
     return (
         <Flex justifyContent="center">
             <Box
-                backgroundColor={"white"}
+                backgroundColor={"#fafafa"}
                 maxW="sm"
                 border=".5px solid #ccc"
                 rounded="xl"
@@ -89,12 +47,8 @@ export default function ProductCard({
                 position="relative">
                 <button
                     className={Styles.wishlist_button}
-                    onClick={
-                        wishlist === false
-                            ? handleWishlistAdd
-                            : handleWishlistRemove
-                    }>
-                    {wishlist === true ? <AiFillHeart /> : <CiHeart />}
+                    onClick={handleWishlistRemove}>
+                    <AiFillHeart />
                 </button>
                 <ReactLink to={`/products/${id}`}>
                     <Image

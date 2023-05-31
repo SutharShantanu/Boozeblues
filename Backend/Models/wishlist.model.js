@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
+    userId: String,
+    prodId: String,
     image: String,
     title: String,
     category: String,
@@ -8,6 +10,6 @@ const schema = mongoose.Schema({
     price: Number,
 });
 
-const productModel = mongoose.model("products", schema);
+const wishlistModel = mongoose.model("wishlist", schema);
 
-module.exports = { productModel };
+module.exports = { wishlistModel };

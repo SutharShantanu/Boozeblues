@@ -1,19 +1,19 @@
-import { Button, Image } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import Styles from "./Style/SingleProduct.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { CiTwitter, CiMail } from "react-icons/ci";
+import { CiTwitter, CiMail, CiHeart } from "react-icons/ci";
 import { SlSocialFacebook } from "react-icons/sl";
 import { HiOutlineCurrencyDollar, HiOutlineColorSwatch } from "react-icons/hi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
 
 import SingleProductBox from "../Components/SingleProductBox";
 
 export function SingleProduct() {
     const param = useParams();
     const [data, setData] = useState({});
-    const [wishlist, setwishlist] = useState(true);
+    const Auth = JSON.parse(localStorage.getItem("isAuth"));
 
     const [selectedButton, setSelectedButton] = useState(null);
 
@@ -51,17 +51,11 @@ export function SingleProduct() {
                             </h4>
                         </div>
                         <div className={Styles.one_two}>
-                            {wishlist ? (
-                                <Image
-                                    src="https://cdn-icons-png.flaticon.com/512/2767/2767018.png"
-                                    onClick={() => setwishlist(!wishlist)}
-                                />
-                            ) : (
-                                <Image
-                                    src="https://cdn-icons-png.flaticon.com/512/2767/2767003.png"
-                                    onClick={() => setwishlist(!wishlist)}
-                                />
-                            )}
+                            <button
+                                className={Styles.wishlist_button}
+                                onClick={() => alert("hey")}>
+                                {Auth === true ? <CiHeart /> : <AiFillHeart />}
+                            </button>
                         </div>
                     </div>
                     <div className={Styles.details_two}>
@@ -73,7 +67,7 @@ export function SingleProduct() {
                                 border={
                                     selectedButton === 1
                                         ? "1px solid #85004b"
-                                        : "1px solid #ccc"
+                                        : "1px solid black"
                                 }
                                 fontWeight="400"
                                 borderRadius="15px"
@@ -92,7 +86,7 @@ export function SingleProduct() {
                                 border={
                                     selectedButton === 2
                                         ? "1px solid #85004b"
-                                        : "1px solid #ccc"
+                                        : "1px solid black"
                                 }
                                 fontWeight="400"
                                 fontSize="14px"
@@ -142,9 +136,9 @@ export function SingleProduct() {
                     </div>
                     <div className={Styles.cart_share}>
                         <h5>Share</h5>
-                        <CiTwitter cursor={"pointer"} />
-                        <SlSocialFacebook cursor={"pointer"} />
-                        <CiMail cursor={"pointer"} />
+                        <CiTwitter />
+                        <SlSocialFacebook />
+                        <CiMail />
                     </div>
 
                     <p className={Styles.cart_info}>

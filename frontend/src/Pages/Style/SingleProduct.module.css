@@ -37,6 +37,16 @@
     width: 11%;
     padding: 5px 0px;
 }
+.wishlist_button {
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+}
+.wishlist_button:hover {
+    background-color: #ccc;
+}
 
 .one_title {
     font-size: 20px;
@@ -127,7 +137,7 @@
     border: 0.5px solid #ccc;
     display: flex;
     justify-content: space-between;
-    background-color: #f1eeee;
+    background-color: #ececec;
     padding: 20px;
     width: 85%;
     margin: 30px auto;

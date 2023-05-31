@@ -51,7 +51,9 @@ const AllProduct = () => {
                 </div>
                 <div className={Styles.two_two}>
                     {product?.map((ele) => (
-                        <ProductCard key={ele.id} {...ele} />
+                        <div key={ele.id}>
+                            <ProductCard id={ele._id} {...ele} />
+                        </div>
                     ))}
                 </div>
             </div>
