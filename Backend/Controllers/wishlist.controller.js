@@ -17,17 +17,24 @@ const getWishlist = async (req, res) => {
 ////////////////POST///////////////////////////
 
 const postWishlist = async (req, res) => {
-    const { prodId, userId, title, image, category, quantity, price } =
-        req.body;
+    const {
+        // prodId,
+        userId,
+        title,
+        image,
+        category,
+        quantity,
+        price,
+    } = req.body;
     try {
         const firstCheck = await wishlistModel.findOne({
-            prodId,
+            // prodId,
             userId,
         });
 
         if (!firstCheck) {
             if (
-                prodId &&
+                // prodId &&
                 userId &&
                 title &&
                 image &&
@@ -52,15 +59,20 @@ const postWishlist = async (req, res) => {
     }
 };
 
-////////////////DELETE///////////////////////////
+// ////////////////DELETE///////////////////////////
 
 const deleteWishlist = async (req, res) => {
+    const { id } = req.params;
     try {
-        await wishlistModel.findByIdAndDelete(req.params.id);
+        await wishlistModel.findByIdAndDelete({ _id: id });
         res.status(200).send({ msg: "Product deleted", status: "success" });
     } catch (e) {
         res.status(400).send({ msg: e.message });
     }
 };
 
-module.exports = { getWishlist, postWishlist, deleteWishlist };
+module.exports = {
+    getWishlist,
+    postWishlist,
+    deleteWishlist,
+};
