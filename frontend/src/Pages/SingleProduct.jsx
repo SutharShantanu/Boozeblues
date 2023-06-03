@@ -12,6 +12,7 @@ import SingleProductBox from "../Components/SingleProductBox";
 
 export function SingleProduct() {
     const param = useParams();
+
     const [data, setData] = useState({});
     const Auth = JSON.parse(localStorage.getItem("isAuth"));
 
@@ -21,22 +22,21 @@ export function SingleProduct() {
         setSelectedButton(buttonIndex);
     };
 
-    const singleProduct = async () => {
-        try {
-            const res = await axios.get(
-                `http://localhost:4500/products/${param.id}`
-            );
-            setData(res.data[0]);
-            console.log(res.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        singleProduct();
+        const fetchData = async () => {
+            try {
+                const res = await axios.get(
+                    `http://localhost:4500/products/${param.id}`
+                );
+                console.log(res.data);
+                setData(res.data[0]);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
     }, []);
-    console.log(data);
 
     return (
         <>

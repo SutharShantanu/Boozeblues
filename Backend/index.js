@@ -16,6 +16,7 @@ app.get(`/`, (req, res) => {
 
 app.use(`/users`, userRouter);
 app.use(`/products`, productRouter);
+
 app.use(`/wishlist`, wishlistRouter);
 
 app.listen(process.env.port, async () => {

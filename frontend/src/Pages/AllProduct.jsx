@@ -26,7 +26,7 @@ const AllProduct = () => {
         };
         dispatch(getProducts(params));
     }, [location.search]);
-
+    console.log(product);
     return (
         <div className={Styles.main}>
             <div className={Styles.main_one}>

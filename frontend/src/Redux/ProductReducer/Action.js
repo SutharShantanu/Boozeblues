@@ -6,7 +6,7 @@ import {
 } from "./ActionType";
 
 export const getProducts = (param) => async (dispatch) => {
-    // console.log(param); 
+    // console.log(param);
     try {
         dispatch({ type: PRODUCTS_lOADING });
         let res = await axios

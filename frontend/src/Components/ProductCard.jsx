@@ -15,26 +15,24 @@ export default function ProductCard({
     quantity,
     price,
     id,
+    _id,
 }) {
     const [wishlist, setwishlist] = useState(false);
     const dispatch = useDispatch();
     const toast = useToast();
 
-    // Fetch wishlist items from Redux store
     const wishlistItems = useSelector((state) => state.wishlist?.items || []);
 
     useEffect(() => {
-        // Check if current product ID exists in wishlist
         const isProductInWishlist = wishlistItems.some(
-            (item) => item.prodId === id
+            (item) => item.prodId === _id
         );
         setwishlist(isProductInWishlist);
-    }, [wishlistItems, id]);
+    }, [wishlistItems, _id]);
 
     const handleWishlistAdd = () => {
         const token = localStorage.getItem("token");
         const decodedToken = jwtDecode(token);
-        console.log(id);
         try {
             const item = {
                 userId: decodedToken.iat,

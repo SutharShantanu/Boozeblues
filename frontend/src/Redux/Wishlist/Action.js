@@ -33,7 +33,8 @@ export const getWishlist = () => (dispatch) => {
 };
 
 export const addWishlist = (product) => (dispatch) => {
-    console.log(product);
+    // console.log(product);
+    // console.log(dispatch);
     axios
         .post(`http://localhost:4500/wishlist/add`, product, {
             headers: {
@@ -48,16 +49,16 @@ export const addWishlist = (product) => (dispatch) => {
         });
 };
 
-export const removeWishlist = (id) => (dispatch) => {
-    console.log(id);
+export const removeWishlist = (_id) => (dispatch) => {
+    console.log(_id);
     axios
-        .delete(`http://localhost:4500/wishlist/delete/${id}`, {
+        .delete(`http://localhost:4500/wishlist/delete/${_id}`, {
             headers: {
                 token: localStorage.getItem("token"),
             },
         })
         .then((res) => {
-            dispatch(wishlistRemove(id));
+            dispatch(wishlistRemove(_id));
             console.log(res);
         })
         .catch((error) => {

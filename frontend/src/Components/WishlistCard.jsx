@@ -12,14 +12,15 @@ export default function WishlistCard({
     quantity,
     price,
     id,
+    _id,
 }) {
     const toast = useToast();
     const dispatch = useDispatch();
-    console.log(id);
+    console.log(_id);
 
     const handleWishlistRemove = async () => {
         try {
-            await dispatch(removeWishlist(id));
+            await dispatch(removeWishlist(_id));
             dispatch(getWishlist());
             toast({
                 title: "Product removed from wishlist",
