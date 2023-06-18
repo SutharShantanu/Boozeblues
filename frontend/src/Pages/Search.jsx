@@ -1,6 +1,9 @@
+// Search.jsx
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import ProductCard from "../Components/ProductCard";
 import axios from "axios";
+import Styles from "./Style/Search.module.css";
 
 const Search = () => {
     const location = useLocation();
@@ -10,10 +13,10 @@ const Search = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
-                const response = await axios.get(
-                    `http://localhost:4500/products/search?query=${searchQuery}`
+                const res = await axios.get(
+                    `http://localhost:4500/products/search/${searchQuery}`
                 );
-                setSearchResults(response.data);
+                setSearchResults(res.data);
             } catch (error) {
                 console.error(error);
             }
@@ -25,16 +28,19 @@ const Search = () => {
     }, [searchQuery]);
 
     return (
-        <div>
-            {searchResults.length > 0 ? (
-                <ul>
-                    {searchResults.map((result) => (
-                        <li key={result.id}>{result.name}</li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No matching products found.</p>
-            )}
+        <div className={Styles.main}>
+            <h1>Searched Products</h1>
+            <div className={Styles.main_one}>
+                {searchResults.length > 0 ? (
+                    <ul>
+                        {searchResults.map((ele) => (
+                            <ProductCard id={ele.id} {...ele} />
+                        ))}
+                    </ul>
+                ) : (
+                    <h1>No matching products found.</h1>
+                )}
+            </div>
         </div>
     );
 };

@@ -14,18 +14,17 @@ import { CiHeart, CiShoppingCart, CiDeliveryTruck } from "react-icons/ci";
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        console.log(searchQuery);
-        setSearchQuery("");
-        navigate("/search");
-    };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search?query=${searchQuery}`);
+    setSearchQuery("");
+  };
 
-    const handleChange = (e) => {
-        setSearchQuery(e.target.value);
-    };
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
     return (
         <div className={Styles.main}>
