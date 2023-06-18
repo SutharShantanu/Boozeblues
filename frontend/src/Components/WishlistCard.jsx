@@ -38,7 +38,7 @@ export default function WishlistCard({
     return (
         <Flex justifyContent="center">
             <Box
-                backgroundColor={"#fafafa"}
+                backgroundColor={"white"}
                 maxW="sm"
                 border=".5px solid #ccc"
                 rounded="xl"

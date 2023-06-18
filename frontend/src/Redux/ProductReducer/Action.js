@@ -10,7 +10,7 @@ export const getProducts = (param) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCTS_lOADING });
         let res = await axios
-            .get("http://localhost:4500/products", param)
+            .get(`http://localhost:4500/products`, param)
             .then((res) => {
                 dispatch({ type: PRODUCTS_SUCCESS, payload: res.data });
                 // console.log(res.data);

@@ -66,12 +66,14 @@ const CategoryWineCarousel = () => {
                         price="9.49"
                     />
                 </div>
-                <CarouselCard
-                    image="https://images.gotoliquorstore.com/product/1000003935/de985a2b-1bad-42b0-915a-30a33b0b3fd6_360_m.jpg"
-                    title="LA Marca"
-                    quantity="6 cans"
-                    price="9.49"
-                />
+                <div>
+                    <CarouselCard
+                        image="https://images.gotoliquorstore.com/product/1000003935/de985a2b-1bad-42b0-915a-30a33b0b3fd6_360_m.jpg"
+                        title="LA Marca"
+                        quantity="6 cans"
+                        price="9.49"
+                    />
+                </div>
                 <div>
                     <CarouselCard
                         image="https://images.gotoliquorstore.com/product/1000004074/f9ccd4a4-c096-46c0-9a00-eb327beb52e2_360_m.jpg"

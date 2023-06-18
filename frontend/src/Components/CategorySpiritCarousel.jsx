@@ -66,12 +66,14 @@ const CategorySpiritCarousel = () => {
                         price="9.49"
                     />
                 </div>
-                <CarouselCard
-                    image="https://images.gotoliquorstore.com/product/1000001495/5443c5a4-c7b5-4fe5-a273-02765e75969f_360_m.jpg"
-                    title="Absolut Vodka"
-                    quantity="6 cans"
-                    price="9.49"
-                />
+                <div>
+                    <CarouselCard
+                        image="https://images.gotoliquorstore.com/product/1000001495/5443c5a4-c7b5-4fe5-a273-02765e75969f_360_m.jpg"
+                        title="Absolut Vodka"
+                        quantity="6 cans"
+                        price="9.49"
+                    />
+                </div>
                 <div>
                     <CarouselCard
                         image="https://images.gotoliquorstore.com/product/1000001934/8a7bd891-e09a-4747-9437-0dd6e661c776_360_m.jpg"

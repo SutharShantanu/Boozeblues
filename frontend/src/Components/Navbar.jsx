@@ -1,6 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Styles from "./Styles/Navbar.module.css";
+
 import {
     Button,
     IconButton,
@@ -12,6 +13,20 @@ import { SearchIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { CiHeart, CiShoppingCart, CiDeliveryTruck } from "react-icons/ci";
 
 const Navbar = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        console.log(searchQuery);
+        setSearchQuery("");
+        navigate("/search");
+    };
+
+    const handleChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
     return (
         <div className={Styles.main}>
             <div className={Styles.left}>
@@ -24,13 +39,22 @@ const Navbar = () => {
             </div>
             <div className={Styles.right}>
                 <InputGroup w={"25wv"}>
-                    <Input type="search" placeholder="Search here anything" />
+                    <Input
+                        type="search"
+                        placeholder="Search here anything"
+                        _focusVisible={{
+                            outline: "none",
+                            backgroundColor: "#EDF2F7",
+                        }}
+                        value={searchQuery}
+                        onChange={handleChange}
+                    />
                     <InputRightElement>
-                        <Link to="/search">
-                            <Button style={{ backgroundColor: "transparent" }}>
-                                <SearchIcon />
-                            </Button>
-                        </Link>
+                        <Button
+                            style={{ backgroundColor: "transparent" }}
+                            onClick={handleSearch}>
+                            <SearchIcon />
+                        </Button>
                     </InputRightElement>
                 </InputGroup>
                 <Link to="/wishlist">

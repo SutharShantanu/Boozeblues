@@ -66,12 +66,14 @@ const CategoryBeerCarousel = () => {
                         price="9.49"
                     />
                 </div>
-                <CarouselCard
-                    image="https://images.gotoliquorstore.com/product/1000000182/5b2326d7-c8ba-477d-a7fb-7df4e12dde39_360_m.jpg"
-                    title="Budweiser"
-                    quantity="6 cans"
-                    price="9.49"
-                />
+                <div>
+                    <CarouselCard
+                        image="https://images.gotoliquorstore.com/product/1000000182/5b2326d7-c8ba-477d-a7fb-7df4e12dde39_360_m.jpg"
+                        title="Budweiser"
+                        quantity="6 cans"
+                        price="9.49"
+                    />
+                </div>
                 <div>
                     <CarouselCard
                         image="https://images.gotoliquorstore.com/product/1000000279/0dcfb3ac-cd82-481f-9a55-2def073e942c_360_m.jpg"

@@ -2,7 +2,6 @@ import React from "react";
 import Styles from "./Style/Homepage.module.css";
 import FullCarousel from "../Components/FullCarousel";
 import DrinkCategory from "../Components/DrinkCategory";
-
 import CategoryBeerCarousel from "../Components/CategoryBeerCarousel";
 import CategoryWineCarousel from "../Components/CategoryWineCarousel";
 import CategorySpiritCarousel from "../Components/CategorySpiritCarousel";
