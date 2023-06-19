@@ -4,7 +4,6 @@ const {
     postWishlist,
     deleteWishlist,
 } = require("../Controllers/wishlist.controller");
-const { wishlistModel } = require("../Models/wishlist.model");
 
 const wishlistRouter = express.Router();
 

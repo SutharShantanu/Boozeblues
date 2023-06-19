@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import Styles from "./Style/SingleProduct.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -7,20 +7,22 @@ import { CiTwitter, CiMail, CiHeart } from "react-icons/ci";
 import { SlSocialFacebook } from "react-icons/sl";
 import { HiOutlineCurrencyDollar, HiOutlineColorSwatch } from "react-icons/hi";
 import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
-
+import jwtDecode from "jwt-decode";
 import SingleProductBox from "../Components/SingleProductBox";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart, removeCart } from "../Redux/Cart/Action";
 
 export function SingleProduct() {
     const param = useParams();
-
     const [data, setData] = useState({});
     const Auth = JSON.parse(localStorage.getItem("isAuth"));
-
     const [selectedButton, setSelectedButton] = useState(null);
 
-    const handleButtonClick = (buttonIndex) => {
-        setSelectedButton(buttonIndex);
-    };
+    const [cart, setCart] = useState(false);
+    const dispatch = useDispatch();
+    const toast = useToast();
+
+    const cartItems = useSelector((state) => state.cart?.items || []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,6 +39,61 @@ export function SingleProduct() {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const isProductInWishlist = cartItems.some(
+            (item) => item.prodId === data._id
+        );
+        setCart(isProductInWishlist);
+    }, [cartItems, data._id]);
+
+    const handleCartAdd = () => {
+        const token = localStorage.getItem("token");
+        const decodedToken = jwtDecode(token);
+        try {
+            const item = {
+                userId: decodedToken.iat,
+                prodId: data.id,
+                image: data.image,
+                title: data.title,
+                category: data.category,
+                quantity: data.quantity,
+                price: data.price,
+            };
+            dispatch(addCart(item));
+            setCart(true);
+            toast({
+                title: "Product added to wishlist",
+                description: "",
+                status: "success",
+                duration: 600,
+                isClosable: true,
+                position: "top",
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleCartRemove = () => {
+        try {
+            dispatch(removeCart());
+            setCart(false);
+            toast({
+                title: "Product removed from Cart",
+                status: "error",
+                duration: 600,
+                isClosable: true,
+                position: "top",
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleButtonClick = (buttonIndex) => {
+        setSelectedButton(buttonIndex);
+    };
 
     return (
         <>
@@ -154,6 +211,9 @@ export function SingleProduct() {
                         width="90%"
                         padding="25px 5px"
                         variant="solid"
+                        onClick={
+                            cart === false ? handleCartAdd : handleCartRemove
+                        }
                         _hover={{ backgroundColor: "#69023c" }}>
                         Add to Cart
                     </Button>

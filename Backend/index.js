@@ -3,6 +3,8 @@ const connection = require("./Config/db");
 const { userRouter } = require("./Routes/user.routes");
 const { productRouter } = require("./Routes/product.routes");
 const { wishlistRouter } = require("./Routes/wishlist.routes");
+const { cartRouter } = require("./Routes/cart.routes");
+
 const app = express();
 var cors = require("cors");
 
@@ -17,6 +19,7 @@ app.get(`/`, (req, res) => {
 app.use(`/users`, userRouter);
 app.use(`/products`, productRouter);
 
+app.use(`/cart`, cartRouter);
 app.use(`/wishlist`, wishlistRouter);
 
 app.listen(process.env.port, async () => {
